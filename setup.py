@@ -30,15 +30,15 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="webcli",
+    name="term2web",
     version=version,
     author="Claude SIMON",
 #    author_email="author@example.com",
     description="Toolkit which overloads 'print(…)' and 'input()' to redirect them to a web page.",
-    keywords="cli, web",
+    keywords="cli, web, term, terminal, text",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/epeios-q37/webcli",
+    url="https://github.com/epeios-q37/term2web",
     packages=setuptools.find_packages(),
     install_requires=[
         'atlastk',

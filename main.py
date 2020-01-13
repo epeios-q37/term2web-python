@@ -26,12 +26,12 @@ SOFTWARE.
 
 import sys,os
 
-sys.path.append("./webcli")
+sys.path.append("./term2web")
 
 if ('Q37_XPP' in os.environ):
-  sys.path.append(os.path.join(os.environ["HOME"],"epeios/other/libs/webcli/PYH/webcli"))
+  sys.path.append(os.path.join(os.environ["HOME"],"epeios/other/libs/term2web/PYH/term2web"))
 
-from webcli import *
+from term2web import *
 
 print("Hello!")
 print("Nice to meet you, ", input("What's your name? "), "!", sep="")
