@@ -24,13 +24,23 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-import sys,os
+import sys,os,time
 
 sys.path.append("./term2web")
 
 if ('Q37_XPP' in os.environ):
   sys.path.append(os.path.join(os.environ["HOME"],"epeios/other/libs/term2web/PYH/term2web"))
 
+
+"""
+********************************************
+    If you comment following line out
+    by putting a # on the beginning,
+    the builtin 'input(…)' and 'print(…)'
+    will be used again.
+    Try it to see the difference.
+********************************************
+"""
 from term2web import *
 
 print("Hello!")
