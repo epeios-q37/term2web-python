@@ -1,3 +1,4 @@
+""" 
 MIT License
 
 Copyright (c) 2020 Claude SIMON (https://q37.info/s/rmnmqd49)
@@ -19,3 +20,34 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+"""
+
+import setuptools
+
+version = "0.0.1"
+
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
+setuptools.setup(
+    name="webcli",
+    version=version,
+    author="Claude SIMON",
+#    author_email="author@example.com",
+    description="Toolkit which overloads 'print(…)' and 'input()' to redirect them to a web page.",
+    keywords="cli, web",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    url="https://github.com/epeios-q37/webcli",
+    packages=setuptools.find_packages(),
+    install_requires=[
+        'atlastk',
+    ],
+    classifiers=[
+      "Development Status :: 4 - Beta",
+      "Environment :: Web Environment",
+      "License :: OSI Approved :: MIT License ",
+      "Operating System :: OS Independent",
+      "Programming Language :: Python :: 3",
+    ]
+)
