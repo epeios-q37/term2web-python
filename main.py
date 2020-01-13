@@ -34,7 +34,7 @@ if ('Q37_XPP' in os.environ):
 from webcli import *
 
 print("Hello!")
-print("Nice to meet you,", input("What's your name? "), "!")
+print("Nice to meet you, ", input("What's your name? "), "!", sep="")
 time.sleep(1.5)
 print("Let's play",end="…")
 time.sleep(1.5)

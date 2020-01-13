@@ -50,7 +50,7 @@ head = """
 body = """
 <div class="vcenter-out">
 	<div class="vcenter-in">
-		<fieldset style="font-family: monospace;" id="Output" data-xdh-onevent="Focus"/>
+		<fieldset style="font-family: monospace; font-size: larger;" id="Output" data-xdh-onevent="Focus"/>
 	</div>
 </div>
 """
@@ -148,7 +148,7 @@ def loop_(dom):
 			cont = False
 		_printWrite.release()
 
-	dom.appendLayout("Output","<span><input type='text' id='Input' data-xdh-onevent='Submit' size='10' maxlength='10'/><br/></span>")
+	dom.appendLayout("Output","<span><input type='text' id='Input' data-xdh-onevent='Submit'/><br/></span>")
 	scrollToBottom_(dom)
 	dom.focus("Input")
 

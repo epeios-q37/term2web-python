@@ -44,8 +44,10 @@ setuptools.setup(
         'atlastk',
     ],
     classifiers=[
-      "Development Status :: 4 - Beta",
+      "Development Status :: 3 - Alpha",
+      "Environment :: Console",
       "Environment :: Web Environment",
+      "Intended Audience :: Developers",
       "License :: OSI Approved :: MIT License ",
       "Operating System :: OS Independent",
       "Programming Language :: Python :: 3",
