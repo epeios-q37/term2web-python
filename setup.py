@@ -38,7 +38,7 @@ setuptools.setup(
     keywords="cli, web, term, terminal, text",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/epeios-q37/term2web",
+    url="https://github.com/epeios-q37/term2web-python",
     packages=setuptools.find_packages(),
     install_requires=[
         'atlastk',
