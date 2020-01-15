@@ -56,14 +56,14 @@ body = """
 """
 
 _print = ""
-_printBuffer = ""
+_printBuffer = "<span>"
 _printRead = threading.Lock()
 _printRead.acquire()
 _printWrite = threading.Lock()
 _printWrite.acquire()
 
 _flush = threading.Lock()
-_autoFlush = True
+_autoFlush = False
 
 _input = ""
 _inputRead = threading.Lock()
@@ -71,18 +71,64 @@ _inputRead.acquire()
 _inputWrite = threading.Lock()
 _inputWrite.acquire()
 
+_props = {}
+
+def getStyle_():
+	style = ""
+
+	for prop in _props: 
+		style += prop + ": " + _props[prop] + "; "
+
+	return style
+
+
+def openingTag_():
+	return "<span style='" + getStyle_() + "'>"
+
+
+def closingTag_():
+	return "</span>"
+
+def reset_style():
+	global _props, _printBuffer
+
+	_props = {}
+
+	_printBuffer += closingTag_()
+	_printBuffer += openingTag_()
+
+	
+
+def set_style(props, value = None):
+	global _props, _printBuffer
+
+	if value:
+		_props[props] = value
+	else:
+		for prop in props:
+			_props[prop] = props[prop]
+
+		_printBuffer += closingTag_()
+		_printBuffer += openingTag_()
+	
+
+
 def handleSpecialChars_(text):
 	return text.replace('\n', "<br/>").replace(" ","&nbsp;")
 
+
 def flush_():
-	global _print, _printBuffer, _printRead, _printWrite
+	global _print, _printBuffer, _printRead, _printWrite, _autoFlush
 	if _printBuffer:
 		_flush.acquire()
 		_printWrite.acquire()
-		_print = _printBuffer
-		_printBuffer = ""
+		_print = _printBuffer + closingTag_()
+		_printBuffer = openingTag_()
 		_printRead.release()
 		_flush.release()
+
+	_autoFlush = False
+
 
 def addToBuffer_(text):
 	global _printBuffer
@@ -94,7 +140,7 @@ def addToBuffer_(text):
 
 
 def print(*args, sep=" ", end="\n"):
-	global _printBuffer, _printRead, _printWrite
+	global _printBuffer, _printRead, _printWrite, _autoFlush
 
 	first = True
 
@@ -107,6 +153,10 @@ def print(*args, sep=" ", end="\n"):
 		addToBuffer_(arg)
 
 	addToBuffer_(end)
+
+	_autoFlush = True
+
+	
 
 
 def input(prompt=""):
@@ -186,7 +236,9 @@ class Atlas_(threading.Thread):
 	def run(self):
 		Atlas.launch(callbacks, None, head, "Blank")
 
-Atlas_().start()
+_atlasThread = Atlas_()
+# _atlasThread.daemon = True
+_atlasThread.start()
 
 class Flush_(threading.Thread):
 	def __init__(self):
@@ -198,5 +250,6 @@ class Flush_(threading.Thread):
 			if _autoFlush:
 				flush_()
 
-
-Flush_().start()
+_flushThread = Flush_()
+# _flushThread.daemon = True
+_flushThread.start()
