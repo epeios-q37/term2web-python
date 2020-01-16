@@ -32,7 +32,7 @@ while not success:
         demo = demos[ord(demoId) - ord('a')] + "." + "py"
         
         # Below line is needed by 'Repl.it'.
-        sys.argv[0]=demos[ord(demoId) - ord('a')] + "/"
+#        sys.argv[0]=demos[ord(demoId) - ord('a')] + "/"
 
         if True:  # Simplifies debugging when set to False
             try:

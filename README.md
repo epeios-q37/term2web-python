@@ -9,9 +9,38 @@ Install (`pip install term2web`), import (`from term2web import *`) and all `pri
 You can also launch:
 - `git clone http://github.com/epeios-q37/term2web-python`,
 - `cd term2web-python`,
-- `python3 main.py`.
+- `python3 main.py` (or directly `python3 Basic.py` or `python3 WithCSS.py`).
 
 Live demonstration: https://q37.info/s/kjjcfcp3.
+
+There are three other functions available.
+
+`set_property(name,value)` applies the CSS property of name `name` and value `value`.
+
+Example:
+
+```python
+set_property("font-style": "italic")
+```
+
+`set_properties(properties)` applies the CSS properties stored in `properties` which is a dictionary whose keys are property names, and values the corresponding property values.
+
+Example:
+
+```python
+set_properties({
+    "text-decoration-line": "line-through"
+    "text-decoration-style": "wavy",
+    "text-decoration-color": "red"
+})
+```
+
+`reset_properties()` removes all the CSS properties set by above functions.
+
+The `Basic.py` program is an example with calls to `print(…)` and `input(…)`, but without CSS formatting.
+
+The `WithCSS.py` program is an exemple of various CSS formatting.
+
 
 ---
 

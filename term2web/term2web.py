@@ -45,12 +45,18 @@ head = """
  input[type="text"] {border: none;}
  input[type="text"]:disabled {background-color: transparent; color: inherit;}
 </style>
+<style id="console">
+	fieldset {
+		font-family: monospace;
+		font-size: larger;
+	}
+</style>
 """
 
 body = """
 <div class="vcenter-out">
 	<div class="vcenter-in">
-		<fieldset style="font-family: monospace; font-size: larger;" id="Output" data-xdh-onevent="Focus"/>
+		<fieldset id="Output" data-xdh-onevent="Focus"/>
 	</div>
 </div>
 """
@@ -71,13 +77,13 @@ _inputRead.acquire()
 _inputWrite = threading.Lock()
 _inputWrite.acquire()
 
-_props = {}
+_properties = {}
 
 def getStyle_():
 	style = ""
 
-	for prop in _props: 
-		style += prop + ": " + _props[prop] + "; "
+	for name in _properties: 
+		style += name + ": " + _properties[name] + "; "
 
 	return style
 
@@ -89,27 +95,33 @@ def openingTag_():
 def closingTag_():
 	return "</span>"
 
-def reset_style():
-	global _props, _printBuffer
 
-	_props = {}
+def reset_properties():
+	global _properties, _printBuffer
+
+	_properties = {}
 
 	_printBuffer += closingTag_()
 	_printBuffer += openingTag_()
 
+
+def set_property(name, value):
+	global _properties, _printBuffer
+
+	_properties[name] = value
+
+	_printBuffer += closingTag_()
+	_printBuffer += openingTag_()
 	
 
-def set_style(props, value = None):
-	global _props, _printBuffer
+def set_properties(properties):
+	global _properties, _printBuffer
 
-	if value:
-		_props[props] = value
-	else:
-		for prop in props:
-			_props[prop] = props[prop]
+	for name in properties:
+		_properties[name] = properties[name]
 
-		_printBuffer += closingTag_()
-		_printBuffer += openingTag_()
+	_printBuffer += closingTag_()
+	_printBuffer += openingTag_()
 	
 
 
@@ -156,8 +168,6 @@ def print(*args, sep=" ", end="\n"):
 
 	_autoFlush = True
 
-	
-
 
 def input(prompt=""):
 	global _print, _printRead,_printWrite, _input, _inputRead,_inputWrite, _autoFlush
@@ -178,8 +188,10 @@ def input(prompt=""):
 
 	return result
 
+
 def scrollToBottom_(dom):
 	dom.execute("window.scrollTo(0,document.getElementById('Output').scrollHeight);")
+
 
 def loop_(dom):
 	global _print, _printRead,_printWrite, _input, _inputRead,_inputWrite,_autoFlush
@@ -202,12 +214,14 @@ def loop_(dom):
 	scrollToBottom_(dom)
 	dom.focus("Input")
 
+
 def acConnect(dom):
 	global _printWrite, _inputWrite
 	dom.setLayout("", body)
 	_printWrite.release()
 	_inputWrite.release()
 	loop_(dom)
+
 
 def acSubmit(dom, id):
 	global _print, _printRead,_printWrite, _input, _inputRead,_inputWrite
@@ -220,14 +234,17 @@ def acSubmit(dom, id):
 	_inputRead.release()
 	loop_(dom)
 
+
 def acFocus(dom):
 	dom.focus("Input")
+
 
 callbacks = {
 	"": acConnect,
 	"Submit": acSubmit,
 	"Focus": acFocus,
 }
+
 
 class Atlas_(threading.Thread):
 	def __init__(self):
@@ -236,9 +253,11 @@ class Atlas_(threading.Thread):
 	def run(self):
 		Atlas.launch(callbacks, None, head, "Blank")
 
+
 _atlasThread = Atlas_()
 # _atlasThread.daemon = True
 _atlasThread.start()
+
 
 class Flush_(threading.Thread):
 	def __init__(self):
@@ -249,6 +268,7 @@ class Flush_(threading.Thread):
 			time.sleep(.1)
 			if _autoFlush:
 				flush_()
+
 
 _flushThread = Flush_()
 # _flushThread.daemon = True
