@@ -37,10 +37,13 @@ set_properties({
 
 `reset_properties()` removes all the CSS properties set by above functions.
 
-The `Basic.py` program is an example with calls to `print(…)` and `input(…)`, but without CSS formatting.
+`Basic.py` is an example with calls to `print(…)` and `input(…)`, but without CSS formatting.
 
-The `WithCSS.py` program is an exemple of various CSS formatting.
+`WithCSS.py` shows how CSS is used to format the displayed text.
 
+There is also a stub to for this library at address <https://q37.info/s/qh99qtjt>.
+
+Unlike other programs based on the *Atlas* toolkit, on which this library is based, it is not possible to simultaneously launch two or more instances of a program based on the *term2web* library. This is intentional, in order to keep this library simple to use, as it is mainly intended for beginners.
 
 ---
 
