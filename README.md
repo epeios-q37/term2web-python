@@ -4,6 +4,8 @@
 
 ***Notice française*** : https://q37.info/s/rhj9qmb9.
 
+**About *Repl.it***: it seems that *Repl.it* sometimes crashes with the content of this repository. This can be avoided by hiding (putting back) the corresponding navigator tab until all files are loaded (~45 s).
+
 This library is like [*termcolor*](https://pypi.org/project/termcolor/), but with all the formatting possibility of [*CSS*](https://en.wikipedia.org/wiki/Cascading_Style_Sheets).
 
 Install (`pip install term2web`), import (`from term2web import *`) and all `print(…)` and `input(…)` will be redirected to a web page.
