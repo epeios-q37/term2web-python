@@ -146,19 +146,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1 id="notice-de-la-bibliothèque-term2web-httpsq37infosdh9gpjft">Notice de la bibliothèque <em>term2web</em> (<a href="https://q37.info/s/dh9gpjft">https://q37.info/s/dh9gpjft</a>)</h1>
 <p><em>term2web</em> est une bibliothèque <em>Python</em> qui redirige les fonctions <code>print(…)</code> et <code>input(…)</code> sur une page web. De ce fait, on peut mettre en forme le texte affiché par ces fonctions en utilisant des <a href="https://fr.wikipedia.org/wiki/Feuilles_de_style_en_cascade">propriétés CSS</a>.</p>
 <p>Cette bibliothèque peut être utilisée pour familiariser les débutants avec l&#39;environnement de développement d&#39;exercices comme celui se trouvant à l&#39;adresse <a href="https://q37.info/s/g9fvwzgp">https://q37.info/s/g9fvwzgp</a>.</p>
-<p>Avec cette bibliothèque, les fonctions <code>print(…)</code> et <code>input(…)</code> s&#39;utilisent comme d&#39;habitude. Il est ainsi facile de la mettre en œuvre dans des programmes s&#39;exécutant habituellement dans un terminal pour que ce programme s&#39;exécute dans une page web.</p>
+<p>Avec cette bibliothèque, les fonctions <code>print(…)</code> et <code>input(…)</code> s&#39;utilisent comme d&#39;habitude. Il est ainsi facile de la mettre en œuvre dans les programmes s&#39;exécutant habituellement dans un terminal pour qu&#39;ils s&#39;exécutent dans une page web.</p>
 <p>Dans un second temps, on pourra utiliser les fonctions suivantes pour améliorer la présentation, est initier par la même occasion au CSS.</p>
-<p><code>set_property(name,value)</code> applique la propriété CSS de nom <code>name</code> et de valeur <code>value</code>.</p>
+<p>On a ainsi <code>set_property(name,value)</code> qui permet d&#39;appliquer la propriété CSS de nom <code>name</code> et de valeur <code>value</code>.</p>
 <p>Exemple:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>set_property(<span class="st">&quot;font-style&quot;</span>: <span class="st">&quot;italic&quot;</span>)</span></code></pre></div>
-<p><code>set_properties(properties)</code> applique les propriétés CSS stockées dans <code>properties</code>, qui est un dictionnaire dont les clefs sont les noms des propriétés, et les valeurs les valeurs de ces propriétés.</p>
+<p>Avec <code>set_properties(properties)</code>, on applique les propriétés CSS stockées dans <code>properties</code>, qui est un dictionnaire dont les clefs sont les noms des propriétés, et les valeurs les valeurs de ces propriétés.</p>
 <p>Exemple:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>set_properties({</span>
 <span id="cb2-2"><a href="#cb2-2"></a>    <span class="st">&quot;text-decoration-line&quot;</span>: <span class="st">&quot;line-through&quot;</span>,</span>
 <span id="cb2-3"><a href="#cb2-3"></a>    <span class="st">&quot;text-decoration-style&quot;</span>: <span class="st">&quot;wavy&quot;</span>,</span>
 <span id="cb2-4"><a href="#cb2-4"></a>    <span class="st">&quot;text-decoration-color&quot;</span>: <span class="st">&quot;red&quot;</span></span>
 <span id="cb2-5"><a href="#cb2-5"></a>})</span></code></pre></div>
-<p><code>reset_properties()</code> supprime toutes les propriétés appliquées avec les précédentes fonctions.</p>
+<p>Et enfin, <code>reset_properties()</code> supprime toutes les propriétés appliquées avec les précédentes fonctions.</p>
 <p>Une démonstration en ligne est disponible à l&#39;adresse <a href="https://q37.info/s/kjjcfcp3">https://q37.info/s/kjjcfcp3</a>. On y trouve <code>Basic.py</code>, qui est une exemple d&#39;utilisation de <code>print(…)</code> et <code>input(…)</code>, sans formatage CSS, et <code>WithCSS.py</code>, qui montre comment on applique des propriétés CSS et le résultat.</p>
 <p>Pour utiliser cette bibliothèque, on pourra, au choix :</p>
 <ul>
