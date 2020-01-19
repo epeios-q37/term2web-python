@@ -1,2 +1,2 @@
 run = "python3 main.py"
-langage = "python"
+language = "python"
