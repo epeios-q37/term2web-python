@@ -33,7 +33,7 @@ Example:
 
 ```python
 set_properties({
-    "text-decoration-line": "line-through"
+    "text-decoration-line": "line-through",
     "text-decoration-style": "wavy",
     "text-decoration-color": "red"
 })
