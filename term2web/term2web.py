@@ -190,7 +190,7 @@ def input(prompt=""):
 
 
 def scrollToBottom_(dom):
-	dom.execute("window.scrollTo(0,document.getElementById('Output').scrollHeight);")
+	dom.execute_void("window.scrollTo(0,document.getElementById('Output').scrollHeight);")
 
 
 def loop_(dom):
