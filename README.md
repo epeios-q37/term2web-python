@@ -4,18 +4,16 @@
 
 ***Notice française*** : https://q37.info/s/rhj9qmb9.
 
-**About *Repl.it***: it seems that *Repl.it* sometimes crashes with the content of this repository. This can be avoided by hiding (putting back) the corresponding navigator tab until all files are loaded (~45 s).
+This library is like [*termcolor*](https://pypi.org/project/termcolor/), but with all the text formatting possibility of [*CSS*](https://en.wikipedia.org/wiki/Cascading_Style_Sheets).
 
-This library is like [*termcolor*](https://pypi.org/project/termcolor/), but with all the formatting possibility of [*CSS*](https://en.wikipedia.org/wiki/Cascading_Style_Sheets).
-
-Install (`pip install term2web`), import (`from term2web import *`) and all `print(…)` and `input(…)` will be redirected to a web page.
+Install (`pip install term2web`), import (`from term2web import *`) on the top of your program, and all `print(…)` and `input(…)` will be redirected to a web page.
 
 You can also launch:
 - `git clone http://github.com/epeios-q37/term2web-python`,
 - `cd term2web-python`,
 - `python3 main.py` (or directly `python3 Basic.py` or `python3 WithCSS.py`).
 
-Live demonstration: https://q37.info/s/kjjcfcp3.
+Online demonstration: https://q37.info/s/kjjcfcp3.
 
 There are three other functions available.
 
@@ -41,13 +39,15 @@ set_properties({
 
 `reset_properties()` removes all the CSS properties set by above functions.
 
-`Basic.py` is an example with calls to `print(…)` and `input(…)`, but without CSS formatting.
+`Basic.py` is an example with calls to `print(…)` and `input(…)`, but without CSS formatting. Comment out the `import * from term2web` for the program to run in the usual way in a terminal.
 
-`WithCSS.py` shows how CSS is used to format the displayed text.
+`WithCSS.py` shows how CSS rules can be used to format the displayed text.
 
-There is also a stub to for this library at address <https://q37.info/s/qh99qtjt>.
+<!-- There is also a stub to for this library at address <https://q37.info/s/qh99qtjt>.-->
 
-Unlike other programs based on the *Atlas* toolkit, on which this library is based, it is not possible to simultaneously launch two or more instances of a program based on the *term2web* library. This is intentional, in order to keep this library simple to use, as it is mainly intended for beginners.
+You can still use the default `print(…)` and `input(…)` after an `import builtins` with `builtins.print(…)` and `builtins.input(…)`.
+
+Unlike other programs based on the [*Atlas* toolkit](https://atlastk.org), on which this library is based, it is not possible to simultaneously launch two or more instances of a program based on the *term2web* library. This is intentional, in order to keep this library simple to use. 
 
 ---
 

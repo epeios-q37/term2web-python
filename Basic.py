@@ -24,7 +24,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-import sys,os,time
+import sys,os
 
 sys.path.append("./term2web")
 
@@ -42,6 +42,8 @@ if ('Q37_XPP' in os.environ):
 ********************************************
 """
 from term2web import *
+
+import time
 
 print("Hello!")
 print("Nice to meet you, ", input("What's your name? "), "!", sep="")

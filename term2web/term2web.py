@@ -25,10 +25,6 @@ SOFTWARE.
 
 import os, sys, threading, time, html
 
-# Detecting 'Repl.it' environment.
-if ('HOME' in os.environ) and (os.environ['HOME'] == '/home/runner'):
-  os.environ["ATK"] = "REPLit"
-
 sys.path.append("./Atlas.zip")
 sys.path.append("../Atlas.zip")
 
