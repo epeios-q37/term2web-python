@@ -9,6 +9,14 @@
 
 ***Notice française*** : https://q37.info/s/rhj9qmb9.
 
+---
+
+***Note for Repl.it users (online demonstrations)***: **after the first demonstration, you may have to click the refresh button (red arrow on picture below) to display the QR code for the other demonstrations.**
+
+[![The refresh button](https://q37.info/s/vsc3c7gc.png "The button to click to display the QR code")](http://q37.info/s/zbgfjtp9)
+
+---
+
 This library is like [*termcolor*](https://pypi.org/project/termcolor/), but with all the text formatting possibility of [*CSS*](https://en.wikipedia.org/wiki/Cascading_Style_Sheets).
 
 Install (`pip install term2web`), import (`from term2web import *`) on the top of your program, and all `print(…)` and `input(…)` will be redirected to a web page.
