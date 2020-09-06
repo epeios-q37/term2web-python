@@ -1,6 +1,11 @@
 # *term2web*: terminal in a web page (*Python* version)
 
-[![Run on Repl.it](https://repl.it/badge/github/epeios-q37/tortoise-python)](https://q37.info/s/kjjcfcp3) [![Version](https://img.shields.io/pypi/v/term2web?color=90b4ed&label=PyPi)](https://q37.info/s/c7pnhdm7) [![license: MIT](https://img.shields.io/github/license/epeios-q37/term2web-python)](https://github.com/epeios-q37/term2web-python/blob/master/LICENSE)
+[![Run on Repl.it](https://q37.info/s/kpm7xhfm.png)](https://q37.info/s/kjjcfcp3)
+
+[![license: MIT](https://img.shields.io/github/license/epeios-q37/term2web-python?color=yellow&style=for-the-badge)](https://github.com/epeios-q37/term2web-python/blob/master/LICENSE)
+[![Stars](https://img.shields.io/github/stars/epeios-q37/term2web-python.svg?style=for-the-badge)](https://github.com/epeios-q37/term2web-python/stargazers)
+[![Forks](https://img.shields.io/github/forks/epeios-q37/term2web-python.svg?style=for-the-badge)](https://github.com/epeios-q37/term2web-python/network/members)
+[![Downloads](https://img.shields.io/pypi/dm/term2web.svg?label=&style=for-the-badge)![Version](https://img.shields.io/pypi/v/term2web?style=for-the-badge&color=90b4ed&label=PyPi)](http://q37.info/s/c7pnhdm7)
 
 ***Notice française*** : https://q37.info/s/rhj9qmb9.
 

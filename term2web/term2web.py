@@ -247,7 +247,7 @@ class Atlas_(threading.Thread):
 		threading.Thread.__init__(self)
 
 	def run(self):
-		Atlas.launch(callbacks, None, head, "Blank")
+		Atlas.launch(callbacks, None, head)
 
 
 _atlasThread = Atlas_()
