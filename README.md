@@ -1,23 +1,14 @@
 # *term2web*: terminal in a web page (*Python* version)
 
-[![Run on Repl.it](https://q37.info/s/kpm7xhfm.png)](https://q37.info/s/kjjcfcp3)
+[![Run on Repl.it](https://q37.info/s/kpm7xhfm.png)](https://q37.info/s/kjjcfcp3)  [![About online demonstrations](https://img.shields.io/badge/about-online%20demonstrations-informational)](https://q37.info/s/sssznrb4)
 
 [![license: MIT](https://img.shields.io/github/license/epeios-q37/term2web-python?color=yellow&style=for-the-badge)](https://github.com/epeios-q37/term2web-python/blob/master/LICENSE)
-[![Stars](https://img.shields.io/github/stars/epeios-q37/term2web-python.svg?style=for-the-badge)](https://github.com/epeios-q37/term2web-python/stargazers)
-[![Forks](https://img.shields.io/github/forks/epeios-q37/term2web-python.svg?style=for-the-badge)](https://github.com/epeios-q37/term2web-python/network/members)
-[![Downloads](https://img.shields.io/pypi/dm/term2web.svg?label=&style=for-the-badge)![Version](https://img.shields.io/pypi/v/term2web?style=for-the-badge&color=90b4ed&label=PyPi)](http://q37.info/s/c7pnhdm7)
+[![Version](https://img.shields.io/pypi/v/term2web?style=for-the-badge&color=90b4ed&label=PyPi)](http://q37.info/s/c7pnhdm7)
 
 ***Notice française*** : https://q37.info/s/rhj9qmb9.
 
----
 
-***Note for Repl.it users (online demonstrations)***: **after the first demonstration, you may have to click the refresh button (red arrow on picture below) to display the QR code for the other demonstrations.**
-
-[![The refresh button](https://q37.info/s/vsc3c7gc.png "The button to click to display the QR code")](http://q37.info/s/zbgfjtp9)
-
----
-
-This library is like [*termcolor*](https://pypi.org/project/termcolor/), but with all the text formatting possibility of [*CSS*](https://en.wikipedia.org/wiki/Cascading_Style_Sheets).
+This library is like [*termcolor*](https://pypi.org/project/termcolor/), but with all the text formatting possibilities of [*CSS*](https://en.wikipedia.org/wiki/Cascading_Style_Sheets).
 
 Install (`pip install term2web`), import (`from term2web import *`) on the top of your program, and all `print(…)` and `input(…)` will be redirected to a web page.
 
@@ -61,7 +52,3 @@ set_properties({
 You can still use the default `print(…)` and `input(…)` after an `import builtins` with `builtins.print(…)` and `builtins.input(…)`.
 
 Unlike other programs based on the [*Atlas* toolkit](https://atlastk.org), on which this library is based, it is not possible to simultaneously launch two or more instances of a program based on the *term2web* library. This is intentional, in order to keep this library simple to use. 
-
----
-
-This project is based on the [*Atlas* toolkit](https://atlastk.org). Other projects using this toolkit can be found here: <https://q37.info/s/sssznrb4>.
