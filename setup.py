@@ -24,7 +24,7 @@ SOFTWARE.
 
 import setuptools
 
-version = "0.0.3"
+version = "0.0.4"
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
@@ -35,7 +35,7 @@ setuptools.setup(
     author="Claude SIMON",
 #    author_email="author@example.com",
     description="Toolkit which overloads 'print(…)' and 'input()' to redirect them to a web page.",
-    keywords="cli, web, term, terminal, text",
+    keywords="cli, web, term, terminal, text, Atlas toolkit, atlastk",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/epeios-q37/term2web-python",
@@ -44,12 +44,14 @@ setuptools.setup(
         'atlastk',
     ],
     classifiers=[
-      "Development Status :: 3 - Alpha",
+      "Development Status :: 5 - Production/Stable",
       "Environment :: Console",
       "Environment :: Web Environment",
       "Intended Audience :: Developers",
+      "Intended Audience :: Education",
       "License :: OSI Approved :: MIT License ",
       "Operating System :: OS Independent",
       "Programming Language :: Python :: 3",
+      "Topic :: Education",
     ]
 )
