@@ -25,8 +25,8 @@ SOFTWARE.
 
 import os, sys, threading, time, html
 
-sys.path.append("./Atlas.zip")
-sys.path.append("../Atlas.zip")
+sys.path.append("./atlastk.zip")
+sys.path.append("../atlastk.zip")
 
 import atlastk as Atlas
 
@@ -34,27 +34,24 @@ head = """
 <title>'term2web' for Python</title>
 <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAAMFBMVEUEAvyEhsxERuS8urQsKuycnsRkYtzc2qwUFvRUVtysrrx0ctTs6qTMyrSUksQ0NuyciPBdAAABHklEQVR42mNgwAa8zlxjDd2A4POfOXPmzZkFCAH2M8fNzyALzDlzg2ENssCbMwkMOsgCa858YOjBKxBzRoHhD7LAHiBH5swCT9HQ6A9ggZ4zp7YCrV0DdM6pBpAAG5Blc2aBDZA68wCsZPuZU0BDH07xvHOmAGKKvgMP2NA/Zw7ADIYJXGDgLQeBBSCBFu0aoAPYQUadMQAJAE29zwAVWMCWpgB08ZnDQGsbGhpsgCqBQHNfzRkDEIPlzFmo0T5nzoMovjPHoAK8Zw5BnA5yDosDSAVYQOYMKIDZzkoDzagAsjhqzjRAfXTmzAQgi/vMQZA6pjtAvhEk0E+ATWRRm6YBZuScCUCNN5szH1D4TGdOoSrggtiNAH3vBBjwAQCglIrSZkf1MQAAAABJRU5ErkJggg==" />
 <style type="text/css">
- html, body {height: 100%; padding: 0; margin: 0; width: 100%;}
- .vcenter-out, .hcenter { display: table; height: 100%; margin: auto;}
- .vcenter-in {display: table-cell; vertical-align: middle;}
- .hidden {display: none;}
- input[type="text"] {border: none;}
- input[type="text"]:disabled {background-color: transparent; color: inherit;}
-</style>
-<style id="console">
-	fieldset {
-		font-family: monospace;
-		font-size: larger;
-	}
+  input[type="text"] {
+    border: none;
+  }
+
+  input[type="text"]:disabled {
+    background-color: transparent;
+    color: inherit;
+  }
+
+  fieldset {
+    font-family: monospace;
+    font-size: larger;
+  }
 </style>
 """
 
 body = """
-<div class="vcenter-out">
-	<div class="vcenter-in">
-		<fieldset id="Output" data-xdh-onevent="Focus"/>
-	</div>
-</div>
+    <fieldset id="Output" data-xdh-onevent="Focus"/>
 """
 
 _print = ""
@@ -75,179 +72,179 @@ _inputWrite.acquire()
 
 _properties = {}
 
+
 def getStyle_():
-	style = ""
+  style = ""
 
-	for name in _properties: 
-		style += name + ": " + _properties[name] + "; "
+  for name in _properties: 
+    style += name + ": " + _properties[name] + "; "
 
-	return style
+  return style
 
 
 def openingTag_():
-	return "<span style='" + getStyle_() + "'>"
+  return "<span style='" + getStyle_() + "'>"
 
 
 def closingTag_():
-	return "</span>"
+  return "</span>"
 
 
 def reset_properties():
-	global _properties, _printBuffer
+  global _properties, _printBuffer
 
-	_properties = {}
+  _properties = {}
 
-	_printBuffer += closingTag_()
-	_printBuffer += openingTag_()
+  _printBuffer += closingTag_()
+  _printBuffer += openingTag_()
 
 
 def set_property(name, value):
-	global _properties, _printBuffer
+  global _properties, _printBuffer
 
-	_properties[name] = value
+  _properties[name] = value
 
-	_printBuffer += closingTag_()
-	_printBuffer += openingTag_()
-	
+  _printBuffer += closingTag_()
+  _printBuffer += openingTag_()
+  
 
 def set_properties(properties):
-	global _properties, _printBuffer
+  global _properties, _printBuffer
 
-	for name in properties:
-		_properties[name] = properties[name]
+  for name in properties:
+    _properties[name] = properties[name]
 
-	_printBuffer += closingTag_()
-	_printBuffer += openingTag_()
-	
-
+  _printBuffer += closingTag_()
+  _printBuffer += openingTag_()
+  
 
 def handleSpecialChars_(text):
-	return text.replace('\n', "<br/>").replace(" ","&nbsp;")
+  return text.replace('\n', "<br/>").replace(" ","&nbsp;")
 
 
 def flush_():
-	global _print, _printBuffer, _printRead, _printWrite, _autoFlush
-	if _printBuffer:
-		_flush.acquire()
-		_printWrite.acquire()
-		_print = _printBuffer + closingTag_()
-		_printBuffer = openingTag_()
-		_printRead.release()
-		_flush.release()
+  global _print, _printBuffer, _printRead, _printWrite, _autoFlush
+  if _printBuffer:
+    _flush.acquire()
+    _printWrite.acquire()
+    _print = _printBuffer + closingTag_()
+    _printBuffer = openingTag_()
+    _printRead.release()
+    _flush.release()
 
-	_autoFlush = False
+  _autoFlush = False
 
 
 def addToBuffer_(text):
-	global _printBuffer
+  global _printBuffer
 
-	text= str(text)
+  text= str(text)
 
-	_printBuffer += handleSpecialChars_(html.escape(text))
-
+  _printBuffer += handleSpecialChars_(html.escape(text))
 
 
 def print(*args, sep=" ", end="\n"):
-	global _printBuffer, _printRead, _printWrite, _autoFlush
+  global _printBuffer, _printRead, _printWrite, _autoFlush
 
-	first = True
+  first = True
 
-	for arg in args:
-		if first:
-			first = False
-		else:
-			addToBuffer_(sep)
+  for arg in args:
+    if first:
+      first = False
+    else:
+      addToBuffer_(sep)
 
-		addToBuffer_(arg)
+    addToBuffer_(arg)
 
-	addToBuffer_(end)
+  addToBuffer_(end)
 
-	_autoFlush = True
+  _autoFlush = True
 
 
 def input(prompt=""):
-	global _print, _printRead,_printWrite, _input, _inputRead,_inputWrite, _autoFlush
+  global _print, _printRead,_printWrite, _input, _inputRead,_inputWrite, _autoFlush
 
-	_autoFlush = False
+  _autoFlush = False
 
-	if prompt:
-		print(prompt,end="")
-		flush_()
+  if prompt:
+    print(prompt,end="")
+    flush_()
 
-	result = ""
-	_printWrite.acquire()
-	_printRead.release()
-	_inputRead.acquire()
-	result = _input
-	_input = ""
-	_inputWrite.release()
+  result = ""
+  _printWrite.acquire()
+  _printRead.release()
+  _inputRead.acquire()
+  result = _input
+  _input = ""
+  _inputWrite.release()
 
-	return result
+  return result
 
 
 def scrollToBottom_(dom):
-	dom.execute_void("window.scrollTo(0,document.getElementById('Output').scrollHeight);")
+  dom.execute_void("window.scrollTo(0,document.getElementById('Output').scrollHeight);")
 
 
 def loop_(dom):
-	global _print, _printRead,_printWrite, _input, _inputRead,_inputWrite,_autoFlush
-	cont = True
-	
-	_autoFlush = True
+  global _print, _printRead,_printWrite, _input, _inputRead,_inputWrite,_autoFlush
+  cont = True
+  
+  _autoFlush = True
 
-	while cont:
-		_printRead.acquire()
+  while cont:
+    _printRead.acquire()
 
-		if _print:
-			dom.appendLayout("Output", "<span>" + _print + "</span>")
-			scrollToBottom_(dom)
-			_print = ""
-		else:
-			cont = False
-		_printWrite.release()
+    if _print:
+      dom.appendLayout("Output", "<span>" + _print + "</span>")
+      scrollToBottom_(dom)
+      _print = ""
+    else:
+      cont = False
 
-	dom.appendLayout("Output","<span><input type='text' id='Input' data-xdh-onevent='Submit'/><br/></span>")
-	scrollToBottom_(dom)
-	dom.focus("Input")
+    _printWrite.release()
+
+  dom.appendLayout("Output","<span><input type='text' id='Input' data-xdh-onevent='Submit'/><br/></span>")
+  scrollToBottom_(dom)
+  dom.focus("Input")
 
 
 def acConnect(dom):
-	global _printWrite, _inputWrite
-	dom.setLayout("", body)
-	_printWrite.release()
-	_inputWrite.release()
-	loop_(dom)
+  global _printWrite, _inputWrite
+  dom.setLayout("", body)
+  _printWrite.release()
+  _inputWrite.release()
+  loop_(dom)
 
 
 def acSubmit(dom, id):
-	global _print, _printRead,_printWrite, _input, _inputRead,_inputWrite
+  global _print, _printRead,_printWrite, _input, _inputRead,_inputWrite
 
-	_inputWrite.acquire()
-	_input = dom.getContent("Input")
-	dom.disableElement("Input")
-	dom.removeAttribute("Input","data-xdh-onevent")
-	dom.removeAttribute("Input","id")
-	_inputRead.release()
-	loop_(dom)
+  _inputWrite.acquire()
+  _input = dom.getContent("Input")
+  dom.disableElement("Input")
+  dom.removeAttribute("Input","data-xdh-onevent")
+  dom.removeAttribute("Input","id")
+  _inputRead.release()
+  loop_(dom)
 
 
 def acFocus(dom):
-	dom.focus("Input")
+  dom.focus("Input")
 
 
 callbacks = {
-	"": acConnect,
-	"Submit": acSubmit,
-	"Focus": acFocus,
+  "": acConnect,
+  "Submit": acSubmit,
+  "Focus": acFocus,
 }
 
 
 class Atlas_(threading.Thread):
-	def __init__(self):
-		threading.Thread.__init__(self)
+  def __init__(self):
+    threading.Thread.__init__(self)
 
-	def run(self):
-		Atlas.launch(callbacks, None, head)
+  def run(self):
+    Atlas.launch(callbacks, None, head)
 
 
 _atlasThread = Atlas_()
@@ -256,14 +253,14 @@ _atlasThread.start()
 
 
 class Flush_(threading.Thread):
-	def __init__(self):
-		threading.Thread.__init__(self)
+  def __init__(self):
+    threading.Thread.__init__(self)
 
-	def run(self):
-		while True:
-			time.sleep(.1)
-			if _autoFlush:
-				flush_()
+  def run(self):
+    while True:
+      time.sleep(.1)
+      if _autoFlush:
+        flush_()
 
 
 _flushThread = Flush_()
